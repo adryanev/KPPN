@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">KPPN</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="title_profile">Profil</string>
+    <string name="sign_in">Masuk</string>
+    <string name="logout">Keluar</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="skip">Lewati langkah ini</string>
+    <string name="sikapus">SIKAPUS</string>
+    <string name="kppn_pekanbaru">Kantor Pelayanan Pembendaharaan Negara Kota Pekanbaru</string>
+    <string name="id_stake">ID Stakeholder</string>
+    <string name="kode_stake">Kode Stakeholder</string>
+    <string name="nama_stake">Nama Stakeholder</string>
+    <string name="email_stake">Email Stakeholder</string>
+    <string name="placeholder_judul">Placeholder Judul Artikel</string>
+    <string name="placeholder_tanggal">Placeholder Tanggal</string>
+    <string name="placeholder_isi">Placeholder Isi Berita</string>
+
+</resources>
