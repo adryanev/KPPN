@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/judul_berita"
             android:text="@string/placeholder_judul"
+            android:textColor="@color/primary_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:layout_weight="1"
             android:gravity="center"
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tanggal_berita"
             android:text="@string/placeholder_tanggal"
+            android:textColor="@color/secondary_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:layout_weight="1"
         />
