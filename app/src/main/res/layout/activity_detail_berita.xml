@@ -25,7 +25,7 @@
             android:fitsSystemWindows="true">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/detail_gambar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
@@ -73,11 +73,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/placeholder_judul"
+                        android:id="@+id/detail_judul"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/placeholder_tanggal"
+                        android:id="@+id/detail_tanggal"
                         android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
                     <TextView
@@ -85,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:text="@string/placeholder_isi"
+                        android:id="@+id/detail_isi"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
                 </LinearLayout>
 

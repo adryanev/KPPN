@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.DetailBeritaActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/splash"/>
         <activity
             android:name=".activities.BeritaActivity"
             android:label="@string/title_activity_berita"
