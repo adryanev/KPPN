@@ -18,5 +18,6 @@
     <string name="placeholder_judul">Placeholder Judul Artikel</string>
     <string name="placeholder_tanggal">Placeholder Tanggal</string>
     <string name="placeholder_isi">Placeholder Isi Berita</string>
+    <string name="title_activity_berita">BeritaActivity</string>
 
 </resources>
