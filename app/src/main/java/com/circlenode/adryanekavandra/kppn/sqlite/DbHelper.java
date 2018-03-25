@@ -116,7 +116,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<Notif> getValidNotif(){
         SQLiteDatabase db = this.getReadableDatabase();
         List<Notif> list = new ArrayList<>();
-        String query = "SELECT * FROM "+TABLE_NOTIF+" WHERE "+KEY_NOTIF_START_END+" > date('now')";
+        String query = "SELECT * FROM "+TABLE_NOTIF+" WHERE "+KEY_NOTIF_START_END+" > date('now') ORDER BY "+KEY_NOTIF_START_END+" DESC";
         Cursor c = db.rawQuery(query,null);
         if(c.moveToFirst()){
             do{
@@ -137,7 +137,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<NotifStake> getAllValidNotifStake(Integer idStake){
         List<NotifStake> notifStakeList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM "+TABLE_NOTIF_STAKE+" WHERE "+KEY_NAMA_STAKE+" = "+idStake+" AND "+KEY_TANGGAL+" > date('now')";
+        String query = "SELECT * FROM "+TABLE_NOTIF_STAKE+" WHERE "+KEY_NAMA_STAKE+" = "+idStake+" AND "+KEY_TANGGAL+" > date('now') ORDER BY "+KEY_TANGGAL+" DESC";
         Cursor c= db.rawQuery(query,null);
 
         if(c.moveToFirst()){

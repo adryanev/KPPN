@@ -25,7 +25,6 @@ import com.facebook.stetho.Stetho;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     Toolbar toolbar;
     Fragment beritaFragment, profilFragment, notifikasiFragment, notifikasiStakeFragment;
     FrameLayout frameLayout;
