@@ -2,7 +2,8 @@
     <string name="app_name">KPPN</string>
     <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifikasi</string>
+    <string name="title_notifications">Notifikasi Umum</string>
+    <string name="title_notifications_stake">Notifikasi Stake</string>
     <string name="title_profile">Profil</string>
     <string name="sign_in">Masuk</string>
     <string name="logout">Keluar</string>
@@ -19,5 +20,8 @@
     <string name="placeholder_tanggal">Placeholder Tanggal</string>
     <string name="placeholder_isi">Placeholder Isi Berita</string>
     <string name="title_activity_berita">BeritaActivity</string>
+    <string name="placeholder_judul_notif">Placeholder judul notif</string>
+    <string name="placeholder_isi_notif">Placeholder isi notif</string>
+    <string name="placeholder_tanggal_notif">Placeholder tanggal notif</string>
 
 </resources>

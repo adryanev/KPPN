@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.circlenode.adryanekavandra.kppn.R;
 import com.circlenode.adryanekavandra.kppn.adapter.NotifAdapter;
+import com.circlenode.adryanekavandra.kppn.adapter.NotifStakeAdapter;
 import com.circlenode.adryanekavandra.kppn.models.Notif;
 import com.circlenode.adryanekavandra.kppn.models.NotifStake;
 import com.circlenode.adryanekavandra.kppn.rest.ApiClient;
@@ -25,10 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Adryan Eka Vandra on 3/23/2018.
+ * Created by Adryan Eka Vandra on 3/25/2018.
  */
 
-public class NotifFragment extends Fragment {
+public class NotifStakeFragment extends Fragment {
 
     ProgressDialog loading;
     RecyclerView recyclerView;
@@ -41,10 +42,10 @@ public class NotifFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_notification,container,false);
-        getActivity().setTitle("KPPN - Notifikasi Umum");
-        recyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_notification_global);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_swipe_refresh_notifikasi);
+        View view = inflater.inflate(R.layout.fragment_notification_stake,container,false);
+        getActivity().setTitle("KPPN - Notifikasi Stake");
+        recyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_notification_stake);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_swipe_refresh_notifikasi_stake);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -52,23 +53,23 @@ public class NotifFragment extends Fragment {
         loading = ProgressDialog.show(getContext(),null,"Sedang mendapatkan notifikasi",true,false);
         sessionManager = new SessionManager(getActivity().getApplicationContext());
         db = new DbHelper(getActivity());
-        retrieveNotification();
+        retrieveStakeNotification();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                retrieveNotification();
+                retrieveStakeNotification();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
         return view;
     }
 
-    private void retrieveNotification() {
-        List<Notif> notifs = db.getValidNotif();
-        recyclerView.setAdapter(new NotifAdapter(notifs,getContext()));
+
+    private void retrieveStakeNotification(){
+        HashMap<String,String> user = sessionManager.getUserDetail();
+        List<NotifStake> notifStakeList = db.getAllValidNotifStake(Integer.parseInt(user.get("stakeKode")));
+        recyclerView.setAdapter(new NotifStakeAdapter(notifStakeList,getContext()));
         loading.dismiss();
-
     }
-
 }

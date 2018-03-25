@@ -6,13 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.circlenode.adryanekavandra.kppn.R;
+import com.circlenode.adryanekavandra.kppn.fragments.BeritaFragment;
+import com.circlenode.adryanekavandra.kppn.fragments.NotifFragment;
+import com.circlenode.adryanekavandra.kppn.fragments.NotifStakeFragment;
+import com.circlenode.adryanekavandra.kppn.fragments.ProfilFragment;
 import com.circlenode.adryanekavandra.kppn.utils.SessionManager;
 import com.facebook.stetho.Stetho;
 
@@ -20,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     Toolbar toolbar;
-    Fragment fragment;
+    Fragment beritaFragment, profilFragment, notifikasiFragment, notifikasiStakeFragment;
+    FrameLayout frameLayout;
     SessionManager sessionManager;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,18 +37,30 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    setFragment(beritaFragment);
                     return true;
                 case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_profile);
+                    setFragment(profilFragment);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    setFragment(notifikasiFragment);
                     return true;
+                case R.id.navigation_notifications_stake:
+                    setFragment(notifikasiStakeFragment);
+                    return true;
+                default:
+                    return false;
             }
-            return false;
+
+
         }
     };
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout,fragment);
+        transaction.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +70,21 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         Stetho.initializeWithDefaults(this);
+        frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
         this.setTitle("KPPN");
+        beritaFragment = new BeritaFragment();
+        profilFragment = new ProfilFragment();
+        notifikasiFragment = new NotifFragment();
+        notifikasiStakeFragment = new NotifStakeFragment();
+        setFragment(beritaFragment);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        if(!sessionManager.isLoggedIn()){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -98,4 +130,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
