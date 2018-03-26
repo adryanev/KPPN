@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize"
-    android:id="@+id/fragment_swipe_refresh_notifikasi">
+    android:id="@+id/fragment_swipe_refresh_notifikasi_stake">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_recycler_view_notification_global">
+        android:id="@+id/fragment_recycler_view_notification_stake">
 
     </android.support.v7.widget.RecyclerView>
 

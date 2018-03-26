@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:id="@+id/fragment_swipe_refresh_berita"
+    android:paddingTop="?attr/actionBarSize"
     >
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/fragment_recycler_view_berita">
 
     </android.support.v7.widget.RecyclerView>

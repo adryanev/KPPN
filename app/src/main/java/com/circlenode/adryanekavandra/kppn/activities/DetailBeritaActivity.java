@@ -22,6 +22,9 @@ import com.circlenode.adryanekavandra.kppn.models.DetailBerita;
 import com.circlenode.adryanekavandra.kppn.responses.ResponseDetailBerita;
 import com.circlenode.adryanekavandra.kppn.rest.ApiClient;
 import com.circlenode.adryanekavandra.kppn.rest.ApiInterface;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,6 +43,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
     ProgressDialog loading;
     ApiInterface apiService;
     Context context;
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +58,12 @@ public class DetailBeritaActivity extends AppCompatActivity {
         context = this;
         apiService = ApiClient.getClient().create(ApiInterface.class);
         loading = ProgressDialog.show(context,null,"Sedang mendapatkan berita",true,false);
+        MobileAds.initialize(this,
+                "ca-app-pub-4489313737581214~9623154793");
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         Intent i = getIntent();
         final Integer id = Integer.parseInt(i.getStringExtra("idBerita"));
 

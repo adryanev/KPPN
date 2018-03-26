@@ -1,5 +1,7 @@
 package com.circlenode.adryanekavandra.kppn.models;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,18 +11,19 @@ public class Notif {
     @SerializedName("notifID")
     @Expose
     private String notifID;
+
     @SerializedName("notifNama")
     @Expose
     private String notifNama;
+
     @SerializedName("notifStakeHolder")
     @Expose
     private String notifStakeHolder;
-    @SerializedName("notifStartDate")
-    @Expose
-    private String notifStartDate;
+
     @SerializedName("notifStartEnd")
     @Expose
     private String notifStartEnd;
+
     @SerializedName("notifPengirim")
     @Expose
     private String notifPengirim;
@@ -52,14 +55,6 @@ public class Notif {
         this.notifStakeHolder = notifStakeHolder;
     }
 
-    public String getNotifStartDate() {
-        return notifStartDate;
-    }
-
-    public void setNotifStartDate(String notifStartDate) {
-        this.notifStartDate = notifStartDate;
-    }
-
     public String getNotifStartEnd() {
         return notifStartEnd;
     }
@@ -83,8 +78,6 @@ public class Notif {
     public void setNotifPesan(String notifPesan) {
         this.notifPesan = notifPesan;
     }
-
-
 
 }
 

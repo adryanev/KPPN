@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,22 +36,24 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity{
 
     public static String TAG = "LoginActivity";
-    TextInputEditText username,password;
+    EditText username,password;
     TextView skip;
     Button loginButton;
     ProgressDialog loading;
     ApiInterface apiService;
     Context context;
     SessionManager sessionManager;
-
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         sessionManager = new SessionManager(this);
-        username = (TextInputEditText) findViewById(R.id.username);
-        password = (TextInputEditText) findViewById(R.id.password);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
         skip = (TextView) findViewById(R.id.skip);
         loginButton = (Button) findViewById(R.id.login_button);
         context = this;
