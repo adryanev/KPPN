@@ -23,5 +23,6 @@
     <string name="placeholder_judul_notif">Placeholder judul notif</string>
     <string name="placeholder_isi_notif">Placeholder isi notif</string>
     <string name="placeholder_tanggal_notif">Placeholder tanggal notif</string>
+    <string name="edit_profil">Edit Profil</string>
 
 </resources>

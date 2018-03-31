@@ -79,8 +79,8 @@ public class BootReceiver extends BroadcastReceiver {
             Log.i("MAIN_ACTIVITY", "Set INTENT " + String.valueOf(Integer.parseInt(notif.getNotifID()) + 1000));
             PendingIntent broadcast = PendingIntent.getBroadcast(context, Integer.parseInt(notif.getNotifID()) + 1000, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent broadcast1 = PendingIntent.getBroadcast(context, Integer.parseInt(notif.getNotifID()), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), broadcast);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, three.getTimeInMillis(), broadcast1);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY, broadcast);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, three.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY, broadcast1);
             Log.i("MAIN_ACTIVITY", "BERHASIL SET NOTIF " + String.valueOf(Integer.parseInt(notif.getNotifID())));
             Log.i("MAIN_ACTIVITY", "BERHASIL SET NOTIF " + String.valueOf(Integer.parseInt(notif.getNotifID()) + 1000));
         }
@@ -122,8 +122,8 @@ public class BootReceiver extends BroadcastReceiver {
             Log.i("MAIN_ACTIVITY", "Set INTENT " + String.valueOf(Integer.parseInt(notif.getNotifID()) + 1000));
             PendingIntent broadcast = PendingIntent.getBroadcast(context, Integer.parseInt(notif.getNotifID()) + 1000, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent broadcast1 = PendingIntent.getBroadcast(context, Integer.parseInt(notif.getNotifID()), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), broadcast);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, three.getTimeInMillis(), broadcast1);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY, broadcast);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, three.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY, broadcast1);
             Log.i("MAIN_ACTIVITY", "BERHASIL SET NOTIF " + String.valueOf(Integer.parseInt(notif.getNotifID())));
             Log.i("MAIN_ACTIVITY", "BERHASIL SET NOTIF " + String.valueOf(Integer.parseInt(notif.getNotifID()) + 1000));
         }

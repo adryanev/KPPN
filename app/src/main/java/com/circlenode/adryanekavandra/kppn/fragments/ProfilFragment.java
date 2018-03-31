@@ -1,5 +1,6 @@
 package com.circlenode.adryanekavandra.kppn.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,9 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.circlenode.adryanekavandra.kppn.R;
+import com.circlenode.adryanekavandra.kppn.activities.EditProfileAcitvity;
 import com.circlenode.adryanekavandra.kppn.models.Stakeholder;
 import com.circlenode.adryanekavandra.kppn.utils.SessionManager;
 
@@ -26,6 +29,7 @@ public class ProfilFragment extends Fragment {
     private String TAG = this.getClass().getSimpleName();
     TextView idStake, namaStake, kodeStake, email;
     SessionManager sessionManager;
+    Button editProfile;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class ProfilFragment extends Fragment {
         namaStake = (TextView) view.findViewById(R.id.placeholder_nama_stake);
         kodeStake = (TextView) view.findViewById(R.id.placeholder_kode_stake);
         email = (TextView) view.findViewById(R.id.placeholder_email_stake);
+        editProfile = (Button)view.findViewById(R.id.btn_edit_profile);
         sessionManager = new SessionManager(getContext());
 
         Log.i(TAG,"Berhasil memuat Fragment Profil");
@@ -47,6 +52,14 @@ public class ProfilFragment extends Fragment {
         namaStake.setText(user.get("stakeName"));
         email.setText(mail);
 
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), EditProfileAcitvity.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         return view;
     }

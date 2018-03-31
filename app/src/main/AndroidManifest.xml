@@ -21,8 +21,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -35,21 +34,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.DetailBeritaActivity"
-            android:theme="@style/splash"/>
+        <activity
+            android:name=".activities.DetailBeritaActivity"
+            android:theme="@style/splash" />
         <activity
             android:name=".activities.BeritaActivity"
             android:label="@string/title_activity_berita"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <receiver
             android:name=".receiver.AlarmReceiver"
-            android:process=":remote"></receiver>
-        <receiver android:name=".receiver.BootReceiver"
+            android:process=":remote" />
+        <receiver
+            android:name=".receiver.BootReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activities.EditProfileAcitvity"></activity>
     </application>
 
 </manifest>

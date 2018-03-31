@@ -21,12 +21,12 @@ public class SessionManager {
 
     private static final String PREF_NAME = "LearnArabicPref";
 
-    private static final String IS_LOGGED_IN = "isLoggedIn";
-    private static final String KEY_STAKE_ID = "stakeID";
-    private static final String KEY_KODE_STAKE = "stakeKode";
-    private static final String KEY_PASSWORD = "password";
-    private static final String KEY_NAMA_STAKE = "stakeName";
-    private static final String KEY_EMAIL = "stakeEmail";
+    public static final String IS_LOGGED_IN = "isLoggedIn";
+    public static final String KEY_STAKE_ID = "stakeID";
+    public static final String KEY_KODE_STAKE = "stakeKode";
+    public static final String KEY_PASSWORD = "password";
+    public static final String KEY_NAMA_STAKE = "stakeName";
+    public static final String KEY_EMAIL = "stakeEmail";
 
 
 
