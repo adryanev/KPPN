@@ -20,13 +20,14 @@ import com.circlenode.adryanekavandra.kppn.fragments.BeritaFragment;
 import com.circlenode.adryanekavandra.kppn.fragments.NotifFragment;
 import com.circlenode.adryanekavandra.kppn.fragments.NotifStakeFragment;
 import com.circlenode.adryanekavandra.kppn.fragments.ProfilFragment;
+import com.circlenode.adryanekavandra.kppn.fragments.WebViewFragment;
 import com.circlenode.adryanekavandra.kppn.utils.SessionManager;
 import com.facebook.stetho.Stetho;
 
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    Fragment beritaFragment, profilFragment, notifikasiFragment, notifikasiStakeFragment;
+    Fragment beritaFragment, profilFragment, notifikasiFragment, notifikasiStakeFragment, webviewFragment;
     FrameLayout frameLayout;
     SessionManager sessionManager;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications_stake:
                     setFragment(notifikasiStakeFragment);
+                    return true;
+                case R.id.navigation_web_view:
+                    setFragment(webviewFragment);
                     return true;
                 default:
                     return false;
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         profilFragment = new ProfilFragment();
         notifikasiFragment = new NotifFragment();
         notifikasiStakeFragment = new NotifStakeFragment();
+        webviewFragment = new WebViewFragment();
         setFragment(beritaFragment);
 
         if(!sessionManager.isLoggedIn()){

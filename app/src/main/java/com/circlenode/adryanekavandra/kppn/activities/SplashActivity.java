@@ -92,6 +92,7 @@ public class SplashActivity extends AppCompatActivity {
         syncManager.syncAll();
         setGlobalNotif();
         if(sessionManager.isLoggedIn()){
+            Log.d(TAG,"Session Manager isLoggedIn = true");
             setStakeNotif();
         }
 
@@ -104,10 +105,11 @@ public class SplashActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         HashMap<String,String> user = sessionManager.getUserDetail();
         List<NotifStake> list = db.getAllValidNotifStake(Integer.parseInt(user.get("stakeKode")));
+        Date c = Calendar.getInstance().getTime();
+        Log.i("MAIN_ACTIVITY", "Current time => " + c);
         for (NotifStake notif : list) {
-            Date c = Calendar.getInstance().getTime();
-            Log.i("MAIN_ACTIVITY", "Current time => " + c);
 
+            Log.d(TAG,"ID Notif Stake yang didapat adalah: "+notif.getNotifID());
             Date myDate = null;
             try {
                 myDate = simpleDateFormat.parse(notif.getTanggal());

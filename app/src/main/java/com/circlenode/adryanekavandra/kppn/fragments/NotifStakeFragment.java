@@ -1,6 +1,7 @@
 package com.circlenode.adryanekavandra.kppn.fragments;
 
 import android.app.ProgressDialog;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +32,10 @@ import java.util.List;
  */
 
 public class NotifStakeFragment extends Fragment {
-
     ProgressDialog loading;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    private  static final String TAG = NotifFragment.class.getSimpleName();
+    private  static final String TAG = NotifStakeFragment.class.getSimpleName();
     ApiInterface apiService;
     DbHelper db;
     List<Notif> notifs ;
@@ -69,6 +70,9 @@ public class NotifStakeFragment extends Fragment {
     private void retrieveStakeNotification(){
         HashMap<String,String> user = sessionManager.getUserDetail();
         List<NotifStake> notifStakeList = db.getAllValidNotifStake(Integer.parseInt(user.get("stakeKode")));
+        for (NotifStake notifStake: notifStakeList){
+            Log.d(TAG,"Notif ID yang tampil: "+notifStake.getNotifID());
+        }
         recyclerView.setAdapter(new NotifStakeAdapter(notifStakeList,getContext()));
         loading.dismiss();
     }

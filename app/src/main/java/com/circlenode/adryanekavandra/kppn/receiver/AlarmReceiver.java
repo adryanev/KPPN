@@ -33,7 +33,7 @@ public class AlarmReceiver  extends BroadcastReceiver{
 
         String pengirm = intent.getStringExtra("notifNama");
         String pesan = intent.getStringExtra("notifPesan");
-        int count = intent.getIntExtra("count",0);
+        int count = intent.getIntExtra("requestCode",0);
 
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(count, PendingIntent.FLAG_UPDATE_CURRENT);
 

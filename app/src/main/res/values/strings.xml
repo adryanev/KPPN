@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifikasi Umum</string>
     <string name="title_notifications_stake">Notifikasi Stake</string>
+    <string name="title_web_view">Web KPPN</string>
     <string name="title_profile">Profil</string>
     <string name="sign_in">Masuk</string>
     <string name="logout">Keluar</string>
