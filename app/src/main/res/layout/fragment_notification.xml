@@ -11,7 +11,8 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_recycler_view_notification_global">
+        android:id="@+id/fragment_recycler_view_notification_global"
+        tools:listitem="@layout/card_notification">
 
     </android.support.v7.widget.RecyclerView>
 

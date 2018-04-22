@@ -5,6 +5,8 @@ import com.circlenode.adryanekavandra.kppn.responses.ResponseBerita;
 import com.circlenode.adryanekavandra.kppn.responses.ResponseDetailBerita;
 import com.circlenode.adryanekavandra.kppn.responses.ResponseNotif;
 import com.circlenode.adryanekavandra.kppn.responses.ResponseNotifStake;
+import com.circlenode.adryanekavandra.kppn.responses.ResponsePembendaharaan;
+import com.circlenode.adryanekavandra.kppn.responses.ResponseStake;
 import com.circlenode.adryanekavandra.kppn.responses.ResponseStakeholder;
 import com.google.gson.JsonObject;
 
@@ -50,6 +52,36 @@ public interface ApiInterface {
             @Field("email") String email
     );
 
+    @GET("pembendaharaan/get-stake")
+    Call<ResponseStake> getAllStakeholder();
+    @GET("pembendaharaan/index")
+    Call<ResponsePembendaharaan> getPembendaharaan(@Query("id") Integer id);
+
+    @FormUrlEncoded
+    @POST("pembendaharaan/create")
+    Call<ResponseBody> setPembendaharaan(@Field("nama") String nama,
+                                                   @Field("tempat_lahir") String tempatLahir,
+                                                   @Field("tanggal_lahir") String tanggalLahir,
+                                                   @Field("alamat") String alamat,
+                                                   @Field("email") String email,
+                                                   @Field("no_hp") String noHP,
+                                                   @Field("id_stakeholder") Integer idStakeholder);
+    @FormUrlEncoded
+    @POST("pembendaharaan/update")
+    Call<ResponseBody> updatePembendaharaan(@Query("id") Integer idBerita,
+                                                      @Field("nama") String nama,
+                                                   @Field("tempat_lahir") String tempatLahir,
+                                                   @Field("tanggal_lahir") String tanggalLahir,
+                                                   @Field("alamat") String alamat,
+                                                   @Field("email") String email,
+                                                   @Field("no_hp") String noHP,
+                                                   @Field("id_stakeholder") Integer idStakeholder);
+
+    @GET("pembendaharaan/delete")
+    Call<ResponseBody> deletePembendaharaan(@Query("id") Integer idPembendaharaan);
+
+    @GET("pembendaharaan/view")
+    Call<ResponsePembendaharaan> getBendahara(@Query("id") Integer id);
 
 
 

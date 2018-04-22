@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linear_card_notif"
     android:orientation="vertical">
 
@@ -29,14 +30,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_judul_notif"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                tools:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/judul_notif"/>
             <TextView
                 android:id="@+id/tanggal_notif"
                 android:layout_marginTop="1dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/placeholder_tanggal_notif"
+                tools:text="@string/placeholder_tanggal_notif"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
             <TextView
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -44,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/isi_notif"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/placeholder_isi_notif"/>
+                tools:text="@string/placeholder_isi_notif"/>
 
         </LinearLayout>
 

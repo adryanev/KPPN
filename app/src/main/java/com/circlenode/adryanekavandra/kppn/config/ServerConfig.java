@@ -5,7 +5,7 @@ package com.circlenode.adryanekavandra.kppn.config;
  */
 
 public class ServerConfig {
-    public static String server = "http://gibimedianusantara.com/app";
+    public static String server = "http://gibimedianusantara.com/kppn";
     public static final String API_ENDPOINT = server+"/api/v1/";
     public static final String IMAGE_FOLDER = server+"/frontend/web/../../backend/web/foto/";
 }

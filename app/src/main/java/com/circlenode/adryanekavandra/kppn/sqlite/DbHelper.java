@@ -28,6 +28,8 @@ public class DbHelper extends SQLiteOpenHelper {
     //nama database
     private static final String DATABASE_NAME = "kppn";
 
+     private static final String KEY_CREATED_AT = "created_at";
+     private static final String KEY_UPDATED_AT = "updated_at";
     //nama-nama tabel
     private static final String TABLE_NOTIF = "notif";
     private static final String TABLE_NOTIF_STAKE = "notifstake";
@@ -55,14 +57,18 @@ public class DbHelper extends SQLiteOpenHelper {
             KEY_NOTIF_STAKE_HOLDER+" TEXT," +
             KEY_NOTIF_START_END+" TEXT," +
             KEY_NOTIF_PENGIRIM+" TEXT," +
-            KEY_NOTIF_PESAN+" TEXT)";
+            KEY_NOTIF_PESAN+" TEXT,"+
+            KEY_CREATED_AT+" DATETIME,"+
+            KEY_UPDATED_AT+" DATETIME)";
 
     private static final String CREATE_TABLE_NOTIF_STAKE = "CREATE TABLE "+TABLE_NOTIF_STAKE+" (" +
             KEY_NOTIF_ID_STAKE+" INTEGER PRIMARY KEY," +
             KEY_NAMA_STAKE+" TEXT," +
             KEY_PESAN+" TEXT," +
             KEY_PENGIRIM+" TEXT," +
-            KEY_TANGGAL+" TEXT)";
+            KEY_TANGGAL+" TEXT,"+
+            KEY_CREATED_AT+" DATETIME,"+
+            KEY_UPDATED_AT+" DATETIME)";
 
 
     public DbHelper(Context context) {
@@ -95,6 +101,8 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(KEY_NOTIF_STAKE_HOLDER,notif.getNotifStakeHolder());
         cv.put(KEY_NOTIF_START_END,notif.getNotifStartEnd());
         cv.put(KEY_NOTIF_PESAN,notif.getNotifPesan());
+        cv.put(KEY_CREATED_AT,notif.getCreatedAt());
+        cv.put(KEY_UPDATED_AT,notif.getCreatedAt());
         Long idNotif = db.insert(TABLE_NOTIF,null,cv);
         return idNotif;
     }
@@ -109,6 +117,8 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(KEY_PESAN,notifStake.getPesan());
         cv.put(KEY_PENGIRIM,notifStake.getPengirim());
         cv.put(KEY_TANGGAL,notifStake.getTanggal());
+        cv.put(KEY_CREATED_AT,notifStake.getCreatedAt());
+        cv.put(KEY_UPDATED_AT,notifStake.getCreatedAt());
         Long idNotifStake = db.insert(TABLE_NOTIF_STAKE,null,cv);
         return idNotifStake;
     }
@@ -116,18 +126,19 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<Notif> getValidNotif(){
         SQLiteDatabase db = this.getReadableDatabase();
         List<Notif> list = new ArrayList<>();
-        String query = "SELECT * FROM "+TABLE_NOTIF+" WHERE "+KEY_NOTIF_START_END+" > date('now') ORDER BY "+KEY_NOTIF_START_END+" DESC";
+        String query = "SELECT * FROM "+TABLE_NOTIF+" WHERE "+KEY_CREATED_AT+" < "+KEY_NOTIF_START_END+" AND date('now') < "+ KEY_NOTIF_START_END +" ORDER BY "+KEY_NOTIF_START_END+" DESC";
         Cursor c = db.rawQuery(query,null);
         if(c.moveToFirst()){
             do{
                 Notif notif = new Notif();
-
                 notif.setNotifID(String.valueOf(c.getString(c.getColumnIndex(KEY_NOTIF_ID))));
                 notif.setNotifNama(c.getString(c.getColumnIndex(KEY_NOTIF_NAMA)));
                 notif.setNotifPesan(c.getString(c.getColumnIndex(KEY_NOTIF_PESAN)));
                 notif.setNotifPengirim(c.getString(c.getColumnIndex(KEY_NOTIF_PENGIRIM)));
                 notif.setNotifStakeHolder(c.getString(c.getColumnIndex(KEY_NOTIF_STAKE_HOLDER)));
                 notif.setNotifStartEnd(c.getString(c.getColumnIndex(KEY_NOTIF_START_END)));
+                notif.setCreatedAt(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
+                notif.setUpdatedAt(c.getString(c.getColumnIndex(KEY_UPDATED_AT)));
                 list.add(notif);
             }while (c.moveToNext());
         }
@@ -137,7 +148,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<NotifStake> getAllValidNotifStake(Integer idStake){
         List<NotifStake> notifStakeList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM "+TABLE_NOTIF_STAKE+" WHERE "+KEY_NAMA_STAKE+" = "+idStake+" AND "+KEY_TANGGAL+" > date('now') ORDER BY "+KEY_TANGGAL+" DESC";
+        String query = "SELECT * FROM "+TABLE_NOTIF_STAKE+" WHERE "+KEY_NAMA_STAKE+" = "+idStake+" AND "+KEY_TANGGAL+" > date('now') AND "+ KEY_CREATED_AT+ " < "+ KEY_TANGGAL+" ORDER BY "+KEY_TANGGAL+" DESC";
         Cursor c= db.rawQuery(query,null);
 
         if(c.moveToFirst()){
@@ -148,7 +159,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 notifStake.setPengirim(c.getString(c.getColumnIndex(KEY_PENGIRIM)));
                 notifStake.setTanggal(c.getString(c.getColumnIndex(KEY_TANGGAL)));
                 notifStake.setPesan(c.getString(c.getColumnIndex(KEY_PESAN)));
-
+                notifStake.setCreatedAt(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
+                notifStake.setUpdatedAt(c.getString(c.getColumnIndex(KEY_UPDATED_AT)));
                 notifStakeList.add(notifStake);
             }while (c.moveToNext());
         }

@@ -31,6 +31,13 @@ public class Notif {
     @Expose
     private String notifPesan;
 
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+    @SerializedName("updated_at")
+    @Expose
+    private String updatedAt;
+
     public String getNotifID() {
         return notifID;
     }
@@ -77,6 +84,21 @@ public class Notif {
 
     public void setNotifPesan(String notifPesan) {
         this.notifPesan = notifPesan;
+    }
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }
