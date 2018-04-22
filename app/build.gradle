@@ -6,8 +6,8 @@ android {
         applicationId "com.circlenode.adryanekavandra.kppn"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 3
-        versionName "2.1"
+        versionCode 4
+        versionName "2.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:12.0.0'
     implementation 'com.google.firebase:firebase-ads:12.0.0'
     implementation 'com.google.firebase:firebase-messaging:12.0.0'
+    implementation 'com.github.MdFarhanRaja:SearchableSpinner:1.9'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

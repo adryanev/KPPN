@@ -31,7 +31,7 @@
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
-                android:src="@mipmap/logo"/>
+                tools:src="@mipmap/logo"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -91,13 +91,13 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/placeholder_judul"
+                            tools:text="@string/placeholder_judul"
                             android:id="@+id/detail_judul"
                             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/placeholder_tanggal"
+                            tools:text="@string/placeholder_tanggal"
                             android:id="@+id/detail_tanggal"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
@@ -105,7 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="@string/placeholder_isi"
+                            tools:text="@string/placeholder_isi"
                             android:id="@+id/detail_isi"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
                     </LinearLayout>
