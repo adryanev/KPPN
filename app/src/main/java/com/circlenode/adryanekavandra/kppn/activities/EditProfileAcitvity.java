@@ -49,7 +49,7 @@ public class EditProfileAcitvity extends AppCompatActivity {
         stakeKode = userData.get(SessionManager.KEY_KODE_STAKE);
         namaStake = userData.get(SessionManager.KEY_NAMA_STAKE);
         passwordStake = userData.get(SessionManager.KEY_PASSWORD);
-        emailStake = userData.get(SessionManager.KEY_EMAIL) == null ? " ": emailStake;
+        emailStake = userData.get(SessionManager.KEY_EMAIL) == null ? " ": userData.get(SessionManager.KEY_EMAIL);
         stakeID = userData.get(SessionManager.KEY_STAKE_ID);
         setTitle("KPPN - Edit Profil");
         tvKodeStake.setText(stakeKode);

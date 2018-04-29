@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    <android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -9,138 +8,140 @@
     android:layout_marginEnd="@dimen/activity_horizontal_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="?android:attr/actionBarSize">
-
-    <LinearLayout
+    android:paddingTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llcard"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
-
-
-        <android.support.v7.widget.CardView
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="@dimen/cardview_default_elevation"
-            app:cardCornerRadius="@dimen/cardview_default_radius"
-            >
-            <TableLayout
+            android:id="@+id/llcard"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/activity_vertical_margin"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                android:stretchColumns="false">
-                <TableRow
-                    android:id="@+id/table_row_1"
-                    android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/cardview_default_elevation"
+                app:cardCornerRadius="@dimen/cardview_default_radius"
+                >
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:gravity="center_horizontal"
-                   >
-                    <TextView
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:stretchColumns="false">
+                    <TableRow
+                        android:id="@+id/table_row_1"
+                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/id_stake"
+                            android:id="@+id/label_id_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            />
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/placeholder_id_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="1"
+                            android:layout_marginStart="8dp"/>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/table_row_2"
                         android:layout_height="wrap_content"
-                        android:text="@string/id_stake"
-                        android:id="@+id/label_id_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        />
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/placeholder_id_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:text="1"
-                        android:layout_marginStart="8dp"/>
-                </TableRow>
-                <TableRow
-                    android:id="@+id/table_row_2"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:gravity="center_horizontal">
-                    <TextView
                         android:layout_width="match_parent"
+                        android:gravity="center_horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label_kode_stake"
+                            android:text="@string/kode_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            />
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/placeholder_kode_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="014813"
+                            android:layout_marginStart="8dp"/>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/table_row_3"
                         android:layout_height="wrap_content"
-                        android:id="@+id/label_kode_stake"
-                        android:text="@string/kode_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        />
-                    <TextView
-                        android:layout_width="160dp"
+                        android:gravity="center_horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label_nama_stake"
+                            android:text="@string/nama_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            />
+                        <TextView
+                            android:layout_width="16dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/placeholder_nama_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="Bank Krut"
+                            android:layout_marginStart="8dp"/>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/table_row_4"
                         android:layout_height="wrap_content"
-                        android:id="@+id/placeholder_kode_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:text="014813"
-                        android:layout_marginStart="8dp"/>
-                </TableRow>
-                <TableRow
-                    android:id="@+id/table_row_3"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal">
-                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/label_nama_stake"
-                        android:text="@string/nama_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        />
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/placeholder_nama_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:text="Bank Krut"
-                        android:layout_marginStart="8dp"/>
-                </TableRow>
-                <TableRow
-                    android:id="@+id/table_row_4"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:gravity="center_horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/label_email_stake"
-                        android:text="@string/email_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        />
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/placeholder_email_stake"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:text="stake@bankkrut.com"
-                        android:layout_marginStart="8dp"/>
-                </TableRow>
+                        android:gravity="center_horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label_email_stake"
+                            android:text="@string/email_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            />
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/placeholder_email_stake"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="stake@bankkrut.com"
+                            android:layout_marginStart="8dp"/>
+                    </TableRow>
 
-            </TableLayout>
-        </android.support.v7.widget.CardView>
-        <Button
+                </TableLayout>
+            </android.support.v7.widget.CardView>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_edit_profile"
+                android:text="@string/edit_profil"
+                android:background="@color/primary"
+                android:textColor="@color/primary_light"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_edit_profile"
-            android:text="@string/edit_profil"
-            android:background="@color/primary"
-            android:textColor="@color/primary_light"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llpembendaharaan"
-        android:layout_below="@id/llcard"
-        android:orientation="vertical">
+            android:id="@+id/llpembendaharaan"
+            android:layout_below="@id/llcard"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvBendahara"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/bendahara"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-
+            <TextView
+                android:id="@+id/tvBendahara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/bendahara"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/fragment_recycler_view_bendahara"
                 android:layout_width="match_parent"
@@ -148,16 +149,22 @@
                 android:layout_marginBottom="32dp"
                 tools:listitem="@layout/card_bendahara" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_tambah_bendahara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="16dp"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
-</RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_tambah_bendahara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="bottom|end"
+            android:layout_below="@+id/llcard"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/ic_add_black_24dp" />
+    </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+

@@ -66,17 +66,6 @@ public class FormBendaharaActivity extends AppCompatActivity {
         i  = getIntent();
         idBendahara = i.getIntExtra("id_bendahara",0);
         Log.i(TAG, "onCreate: idBendahara "+idBendahara);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.jabatanList));
-
-        etJabatan.setAdapter(arrayAdapter);
-        etJabatan.setCursorVisible(false);
-        etJabatan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                etJabatan.showDropDown();
-                selection = (String) parent.getItemAtPosition(position);
-            }
-        });
 
         prepareList();
         if(idBendahara !=0){
@@ -90,6 +79,18 @@ public class FormBendaharaActivity extends AppCompatActivity {
         etStakeholder = (TextInputEditText) findViewById(R.id.etStakeHolder);
         btnSave = (Button) findViewById(R.id.saveBendahara);
         Log.d(TAG, "onCreate: load form");
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.jabatanList));
+
+        etJabatan.setAdapter(arrayAdapter);
+        etJabatan.setCursorVisible(false);
+        etJabatan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                etJabatan.showDropDown();
+                selection = (String) parent.getItemAtPosition(position);
+            }
+        });
 
         etJabatan.setOnClickListener(new View.OnClickListener() {
             @Override

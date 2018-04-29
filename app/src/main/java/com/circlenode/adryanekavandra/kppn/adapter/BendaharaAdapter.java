@@ -58,7 +58,7 @@ public class BendaharaAdapter extends RecyclerView.Adapter<BendaharaAdapter.MyVi
 
             constraintLayoutIsiCard = (ConstraintLayout) itemView.findViewById(R.id.constraint_isi_card_bendahara);
             tvNama = (TextView) itemView.findViewById(R.id.nama_bendahara);
-            tvTTL = (TextView) itemView.findViewById(R.id.ttl_bendahara);
+            tvTTL = (TextView) itemView.findViewById(R.id.jabatan);
             tvAlamat = (TextView) itemView.findViewById(R.id.alamat_bendahara);
             tvNohp = (TextView) itemView.findViewById(R.id.nohp_bendahara);
             tvStakeholder = (TextView) itemView.findViewById(R.id.stakeholder_bendahara);
@@ -80,11 +80,9 @@ public class BendaharaAdapter extends RecyclerView.Adapter<BendaharaAdapter.MyVi
         final Bendahara bendahara = bendaharaList.get(position);
 
         holder.tvNama.setText(bendahara.getNama());
-        try {
-            holder.tvTTL.setText(bendahara.getTempatAndTanggalLahir());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        holder.tvTTL.setText(bendahara.getJabatan());
+
         holder.tvAlamat.setText(bendahara.getAlamat());
         holder.tvStakeholder.setText(bendahara.getIdStakeHolder());
         holder.tvEmail.setText(bendahara.getEmail());
