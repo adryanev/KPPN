@@ -60,8 +60,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("pembendaharaan/create")
     Call<ResponseBody> setPembendaharaan(@Field("nama") String nama,
-                                                   @Field("tempat_lahir") String tempatLahir,
-                                                   @Field("tanggal_lahir") String tanggalLahir,
+                                                   @Field("jabatan") String tempatLahir,
                                                    @Field("alamat") String alamat,
                                                    @Field("email") String email,
                                                    @Field("no_hp") String noHP,
@@ -70,8 +69,7 @@ public interface ApiInterface {
     @POST("pembendaharaan/update")
     Call<ResponseBody> updatePembendaharaan(@Query("id") Integer idBerita,
                                                       @Field("nama") String nama,
-                                                   @Field("tempat_lahir") String tempatLahir,
-                                                   @Field("tanggal_lahir") String tanggalLahir,
+                                                   @Field("jabatan") String tempatLahir,
                                                    @Field("alamat") String alamat,
                                                    @Field("email") String email,
                                                    @Field("no_hp") String noHP,

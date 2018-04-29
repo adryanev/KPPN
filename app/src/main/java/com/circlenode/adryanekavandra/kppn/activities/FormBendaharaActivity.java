@@ -9,8 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -38,20 +41,19 @@ import retrofit2.Response;
 
 public class FormBendaharaActivity extends AppCompatActivity {
     private static final String TAG = "FormBendaharaActivity";
-    TextInputEditText etNama, etTempatLahir, etAlamat, etTanggalLahir, etEmail, etNoHp, etStakeholder;
-    TextInputLayout tlNama,tlTempatLahir, tlTanggalLahir, tlEmail, tlNoHp, tlStakeholder;
+    TextInputEditText etNama, etAlamat, etEmail, etNoHp, etStakeholder;
+    AppCompatAutoCompleteTextView etJabatan;
     Button btnSave;
     List<Stakeholder> list;
     ArrayList<String> arrayList;
     HashMap<String, String> kvStake;
     ApiInterface apiService;
     SpinnerDialog spinnerDialog;
-    private int mYear, mMonth, mDay;
-    static final int DATE_DIALOG_ID = 0;
     ProgressDialog pd;
     Integer idBendahara;
     Intent i;
-    String nama, tempatLahir, tanggalLahir, email, alamat, noHp, stakeholder;
+    String selection;
+    String nama, jabatan,  email, alamat, noHp, stakeholder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,14 +66,24 @@ public class FormBendaharaActivity extends AppCompatActivity {
         i  = getIntent();
         idBendahara = i.getIntExtra("id_bendahara",0);
         Log.i(TAG, "onCreate: idBendahara "+idBendahara);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.jabatanList));
+
+        etJabatan.setAdapter(arrayAdapter);
+        etJabatan.setCursorVisible(false);
+        etJabatan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                etJabatan.showDropDown();
+                selection = (String) parent.getItemAtPosition(position);
+            }
+        });
 
         prepareList();
         if(idBendahara !=0){
             prepareisiForm();
         }
         etNama = (TextInputEditText) findViewById(R.id.etNamaBendahara);
-        etTempatLahir = (TextInputEditText) findViewById(R.id.etTempatLahirBendahara);
-        etTanggalLahir = (TextInputEditText) findViewById(R.id.etTanggalLahirBendahara);
+        etJabatan = (AppCompatAutoCompleteTextView) findViewById(R.id.jabatan_perbendaharaan);
         etEmail = (TextInputEditText) findViewById(R.id.etEmail);
         etAlamat = (TextInputEditText) findViewById(R.id.etAlamatBendahara);
         etNoHp = (TextInputEditText) findViewById(R.id.etNoHp);
@@ -79,20 +91,15 @@ public class FormBendaharaActivity extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.saveBendahara);
         Log.d(TAG, "onCreate: load form");
 
-        spinnerDialog = new SpinnerDialog(FormBendaharaActivity.this,arrayList,"Pilih stakeholder");
-
-        etTanggalLahir.setOnClickListener(new View.OnClickListener() {
+        etJabatan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                final Calendar today = Calendar.getInstance();
-                mYear = today.get(Calendar.YEAR);
-                mMonth = today.get(Calendar.MONTH);
-                mDay = today.get(Calendar.DAY_OF_MONTH);
-
-                //noinspection deprecation
-                showDialog(DATE_DIALOG_ID);
+            public void onClick(View v) {
+                etJabatan.showDropDown();
             }
         });
+        spinnerDialog = new SpinnerDialog(FormBendaharaActivity.this,arrayList,"Pilih stakeholder");
+
+
         etStakeholder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,8 +130,7 @@ public class FormBendaharaActivity extends AppCompatActivity {
                 List<Bendahara> bendahara = response.body().getBendaharaList();
                 Bendahara data = bendahara.get(0);
                 etNama.setText(data.getNama());
-                etTempatLahir.setText(data.getTempatLahir());
-                etTanggalLahir.setText(data.getTanggalLahir());
+                etJabatan.setText(data.getJabatan());
                 etEmail.setText(data.getEmail());
                 etAlamat.setText(data.getAlamat());
                 etNoHp.setText(data.getNoHp());
@@ -176,8 +182,7 @@ public class FormBendaharaActivity extends AppCompatActivity {
 
     private void simpanDiServer() {
         nama = etNama.getText().toString();
-        tempatLahir = etTempatLahir.getText().toString();
-        tanggalLahir = etTanggalLahir.getText().toString();
+        jabatan = etJabatan.getText().toString();
         email = etEmail.getText().toString();
         alamat = etAlamat.getText().toString();
         noHp = etNoHp.getText().toString();
@@ -191,7 +196,7 @@ public class FormBendaharaActivity extends AppCompatActivity {
     }
 
     private void updateBendahara(Integer idBendahara) {
-        apiService.updatePembendaharaan(idBendahara,nama,tempatLahir,tanggalLahir,alamat,email,noHp,Integer.parseInt(stakeholder)).enqueue(new Callback<ResponseBody>() {
+        apiService.updatePembendaharaan(idBendahara,nama,jabatan,alamat,email,noHp,Integer.parseInt(stakeholder)).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
@@ -215,7 +220,7 @@ public class FormBendaharaActivity extends AppCompatActivity {
     }
 
     private void createBendahara() {
-        apiService.setPembendaharaan(nama,tempatLahir,tanggalLahir,alamat,email,noHp,Integer.parseInt(stakeholder)).enqueue(new Callback<ResponseBody>() {
+        apiService.setPembendaharaan(nama,jabatan,alamat,email,noHp,Integer.parseInt(stakeholder)).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
@@ -236,32 +241,5 @@ public class FormBendaharaActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void updateDate() {
-        this.etTanggalLahir.setText(new StringBuilder().append(mYear).append("-").append(mMonth+1).append("-").append(mDay));
-    }
-
-    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            mYear = year;
-            mMonth = month;
-            mDay = dayOfMonth;
-            updateDate();
-        }
-    };
-
-    @SuppressWarnings("deprecation")
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this,
-                        mDateSetListener,
-                        mYear, mMonth, mDay);
-        }
-        return null;
-    }
-
 
 }

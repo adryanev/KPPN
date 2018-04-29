@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Bendahara {
     @SerializedName("id")
@@ -14,12 +16,9 @@ public class Bendahara {
     @SerializedName("nama")
     @Expose
     private String nama;
-    @SerializedName("tempat_lahir")
+    @SerializedName("jabatan")
     @Expose
-    private String tempatLahir;
-    @SerializedName("tanggal_lahir")
-    @Expose
-    private String tanggalLahir;
+    private String jabatan;
     @SerializedName("alamat")
     @Expose
     private String alamat;
@@ -32,6 +31,7 @@ public class Bendahara {
     @SerializedName("id_stakeholder")
     @Expose
     private String idStakeHolder;
+
 
     public String getId() {
         return id;
@@ -49,20 +49,12 @@ public class Bendahara {
         this.nama = nama;
     }
 
-    public String getTempatLahir() {
-        return tempatLahir;
+    public String getJabatan() {
+        return jabatan;
     }
 
-    public void setTempatLahir(String tempatLahir) {
-        this.tempatLahir = tempatLahir;
-    }
-
-    public String getTanggalLahir() {
-        return tanggalLahir;
-    }
-
-    public void setTanggalLahir(String tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
     }
 
     public String getAlamat() {
@@ -96,15 +88,5 @@ public class Bendahara {
     public void setNamaStake(String idStakeHolder) {
         this.idStakeHolder = idStakeHolder;
     }
-    public String getTempatAndTanggalLahir() throws ParseException {
 
-        String date = this.getTanggalLahir();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date tanggal = simpleDateFormat.parse(date);
-        simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
-        date = simpleDateFormat.format(tanggal);
-        String formatted = this.tempatLahir+", "+date;
-
-        return formatted;
-    }
 }

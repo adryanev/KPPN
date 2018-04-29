@@ -44,7 +44,7 @@
                 tools:text="@string/bendahara_nama" />
 
             <TextView
-                android:id="@+id/ttl_bendahara"
+                android:id="@+id/jabatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -56,7 +56,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nama_bendahara"
-                tools:text="@string/bendahara_ttl" />
+                tools:text="@string/bendahara_jabatan" />
 
             <TextView
                 android:id="@+id/alamat_bendahara"
@@ -70,7 +70,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ttl_bendahara"
+                app:layout_constraintTop_toBottomOf="@+id/jabatan"
                 tools:text="@string/bendahara_alamat" />
             <TextView
                 android:id="@+id/email_bendahara"
@@ -85,7 +85,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/alamat_bendahara"
-                tools:text="@string/bendahara_alamat" />
+                tools:text="@string/email_stake" />
 
 
             <TextView

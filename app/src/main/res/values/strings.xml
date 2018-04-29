@@ -25,11 +25,17 @@
     <string name="placeholder_isi_notif">Placeholder isi notif</string>
     <string name="placeholder_tanggal_notif">Placeholder tanggal notif</string>
     <string name="edit_profil">Edit Profil</string>
-    <string name="bendahara">Bendahara</string>
+    <string name="bendahara">Pejabat Perbendaharaan</string>
     <string name="bendahara_nama">Nama Bendahara</string>
-    <string name="bendahara_ttl">Tempat, 09 Agustus 1231</string>
+    <string name="bendahara_jabatan">Jabatan Perbendaharaan</string>
     <string name="bendahara_alamat">Alamatnya bendahara</string>
     <string name="bendahara_no_hp">080989999</string>
     <string name="bendahara_stakeholder">Kerajaan Antariksa</string>
+    <string-array name="jabatanList">
+        <item>KPA</item>
+        <item>PPK</item>
+        <item>PPSPM</item>
+        <item>Bendahara</item>
+    </string-array>
 
 </resources>

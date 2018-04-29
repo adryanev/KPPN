@@ -55,6 +55,7 @@ public class EditProfileAcitvity extends AppCompatActivity {
         tvKodeStake.setText(stakeKode);
         etNamaStake.setText(namaStake);
         etEmailStake.setText(emailStake);
+        etPasswordStake.setText(passwordStake);
 
         actionEditProfil.setOnClickListener(new View.OnClickListener() {
             @Override
